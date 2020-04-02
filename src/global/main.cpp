@@ -14,8 +14,20 @@
 */
 //=================================================================================================
 
+// Sk includes
+#include <WCoreApplication>
+
 //-------------------------------------------------------------------------------------------------
 // Functions
 //-------------------------------------------------------------------------------------------------
 
-int main(int argc, char * argv[]) {}
+int main(int argc, char * argv[])
+{
+    QCoreApplication * application = WCoreApplication::create(argc, argv);
+
+    if (application == NULL) return 0;
+
+    qDebug("Hello Sky Console");
+
+    return application->exec();
+}

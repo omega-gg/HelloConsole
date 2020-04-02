@@ -4,6 +4,7 @@ HEADERS += $$SK_CORE/controllers/WController.h \
            $$SK_CORE/controllers/WController_p.h \
            $$SK_CORE/controllers/WControllerApplication.h \
            $$SK_CORE/controllers/WControllerApplication_p.h \
+           $$SK_CORE/controllers/WControllerDeclarative.h \
            #$$SK_CORE/controllers/WControllerPlugin.h \
            $$SK_CORE/controllers/WControllerFile.h \
            $$SK_CORE/controllers/WControllerFile_p.h \
@@ -16,6 +17,7 @@ HEADERS += $$SK_CORE/controllers/WController.h \
 
 SOURCES += $$SK_CORE/controllers/WController.cpp \
            $$SK_CORE/controllers/WControllerApplication.cpp \
+           $$SK_CORE/controllers/WControllerDeclarative.cpp \
            #$$SK_CORE/controllers/WControllerPlugin.cpp \
            $$SK_CORE/controllers/WControllerFile.cpp \
            $$SK_CORE/controllers/WControllerXml.cpp \

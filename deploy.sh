@@ -100,6 +100,8 @@ echo "COPYING HelloConsole"
 
 if [ $2 = "macOS" ]; then
 
+    cp bin/HelloConsole deploy
+
     cd deploy
 
     #----------------------------------------------------------------------------------------------

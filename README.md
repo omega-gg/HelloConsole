@@ -27,6 +27,30 @@ On Windows:
 Recommended:
 - [Qt Creator](http://download.qt.io/official_releases/qtcreator) 3.6.0 or later.
 
+## 3rdparty
+
+You can install third party libraries with:
+
+    sh 3rdparty.sh <win32 | win64 | macOS | linux | android>
+
+## Configure
+
+You can configure HelloConsole with:
+
+    sh configure.sh <qt4 | qt5 | clean> <win32 | win64 | macOS | linux | android> [sky]
+
+## Build
+
+You can build HelloConsole with:
+
+    sh build.sh <qt4 | qt5 | clean> <win32 | win64 | macOS | linux> [deploy]
+
+## Deploy
+
+You can deploy HelloConsole with:
+
+    sh deploy.sh <qt4 | qt5 | clean> <win32 | win64 | macOS | linux>
+
 ## License
 
 Copyright (C) 2015 - 2020 HelloConsole authors united with [omega](http://omega.gg/about).

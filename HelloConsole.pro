@@ -40,7 +40,11 @@ include(src/3rdparty/qtsingleapplication/qtsingleapplication.pri)
 
 INCLUDEPATH += $$SK/include/SkCore \
 
-OTHER_FILES += README.md \
+OTHER_FILES += 3rdparty.sh \
+               configure.sh \
+               build.sh \
+               deploy.sh \
+               README.md \
                LICENSE.md \
                AUTHORS.md \
                .azure-pipelines.yml \

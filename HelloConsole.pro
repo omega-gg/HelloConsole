@@ -7,9 +7,9 @@ TARGET = HelloConsole
 DESTDIR = $$_PRO_FILE_PWD_/bin
 
 contains(QT_MAJOR_VERSION, 4) {
-    QT += network declarative script xml xmlpatterns
+    QT += declarative network script xml xmlpatterns
 } else {
-    QT += network qml xml xmlpatterns
+    QT += qml network xml xmlpatterns
 }
 
 QT -= gui

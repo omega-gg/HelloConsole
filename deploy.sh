@@ -81,15 +81,30 @@ if [ $os = "windows" ]; then
 
 elif [ $2 = "macOS" ]; then
 
-    cp "$path"/*.dylib deploy
+    if [ $1 = "qt5" ]; then
 
-    rm -f deploy/Sk*.dylib
-
+        cp "$path"/QtCore.dylib        deploy
+        cp "$path"/QtNetwork.dylib     deploy
+        cp "$path"/QtQml.dylib         deploy
+        cp "$path"/QtXml.dylib         deploy
+        cp "$path"/QtXmlPatterns.dylib deploy
+    fi
 elif [ $2 = "linux" ]; then
 
-    cp "$path"/*.so* deploy
+    if [ $1 = "qt4" ]; then
 
-    rm -f deploy/Sk*.so*
+        cp "$path"/libQtCore.so.4        deploy
+        cp "$path"/libQtNetwork.so.4     deploy
+        cp "$path"/libQtScript.so.4      deploy
+        cp "$path"/libQtXml.so.4         deploy
+        cp "$path"/libQtXmlPatterns.so.4 deploy
+    else
+        cp "$path"/libQt5Core.so.5        deploy
+        cp "$path"/libQt5Network.so.5     deploy
+        cp "$path"/libQt5Qml.so.5         deploy
+        cp "$path"/libQt5Xml.so.5         deploy
+        cp "$path"/libQt5XmlPatterns.so.5 deploy
+    fi
 fi
 
 #--------------------------------------------------------------------------------------------------
@@ -110,32 +125,20 @@ if [ $2 = "macOS" ]; then
     install_name_tool -change @rpath/QtCore.framework/Versions/5/QtCore \
                               @loader_path/QtCore.dylib HelloConsole
 
-    install_name_tool -change @rpath/QtGui.framework/Versions/5/QtGui \
-                              @loader_path/QtGui.dylib HelloConsole
-
     install_name_tool -change @rpath/QtNetwork.framework/Versions/5/QtNetwork \
                               @loader_path/QtNetwork.dylib HelloConsole
 
-    install_name_tool -change @rpath/QtOpenGL.framework/Versions/5/QtOpenGL \
-                              @loader_path/QtOpenGL.dylib HelloConsole
-
     install_name_tool -change @rpath/QtQml.framework/Versions/5/QtQml \
                               @loader_path/QtQml.dylib HelloConsole
-
-    install_name_tool -change @rpath/QtQuick.framework/Versions/5/QtQuick \
-                              @loader_path/QtQuick.dylib HelloConsole
-
-    install_name_tool -change @rpath/QtSvg.framework/Versions/5/QtSvg \
-                              @loader_path/QtSvg.dylib HelloConsole
-
-    install_name_tool -change @rpath/QtWidgets.framework/Versions/5/QtWidgets \
-                              @loader_path/QtWidgets.dylib HelloConsole
 
     install_name_tool -change @rpath/QtXml.framework/Versions/5/QtXml \
                               @loader_path/QtXml.dylib HelloConsole
 
     install_name_tool -change @rpath/QtXmlPatterns.framework/Versions/5/QtXmlPatterns \
                               @loader_path/QtXmlPatterns.dylib HelloConsole
+
+    #----------------------------------------------------------------------------------------------
+
     cd -
 
 elif [ $2 = "android" ]; then

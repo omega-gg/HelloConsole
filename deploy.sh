@@ -67,6 +67,7 @@ if [ $os = "windows" ]; then
     if [ $1 = "qt4" ]; then
 
         cp "$path"/QtCore4.dll        deploy
+        cp "$path"/QtDeclarative4.dll deploy
         cp "$path"/QtNetwork4.dll     deploy
         cp "$path"/QtScript4.dll      deploy
         cp "$path"/QtXml4.dll         deploy
@@ -94,6 +95,7 @@ elif [ $2 = "linux" ]; then
     if [ $1 = "qt4" ]; then
 
         cp "$path"/libQtCore.so.4        deploy
+        cp "$path"/libQtDeclarative.so.4 deploy
         cp "$path"/libQtNetwork.so.4     deploy
         cp "$path"/libQtScript.so.4      deploy
         cp "$path"/libQtXml.so.4         deploy

@@ -67,7 +67,6 @@ if [ $os = "windows" ]; then
     if [ $1 = "qt4" ]; then
 
         cp "$path"/QtCore4.dll        deploy
-        cp "$path"/QtDeclarative4.dll deploy
         cp "$path"/QtNetwork4.dll     deploy
         cp "$path"/QtScript4.dll      deploy
         cp "$path"/QtXml4.dll         deploy
@@ -75,7 +74,6 @@ if [ $os = "windows" ]; then
     else
         cp "$path"/Qt5Core.dll        deploy
         cp "$path"/Qt5Network.dll     deploy
-        cp "$path"/Qt5Qml.dll         deploy
         cp "$path"/Qt5Xml.dll         deploy
         cp "$path"/Qt5XmlPatterns.dll deploy
     fi
@@ -86,7 +84,6 @@ elif [ $2 = "macOS" ]; then
 
         cp "$path"/QtCore.dylib        deploy
         cp "$path"/QtNetwork.dylib     deploy
-        cp "$path"/QtQml.dylib         deploy
         cp "$path"/QtXml.dylib         deploy
         cp "$path"/QtXmlPatterns.dylib deploy
     fi
@@ -95,7 +92,6 @@ elif [ $2 = "linux" ]; then
     if [ $1 = "qt4" ]; then
 
         cp "$path"/libQtCore.so.4        deploy
-        cp "$path"/libQtDeclarative.so.4 deploy
         cp "$path"/libQtNetwork.so.4     deploy
         cp "$path"/libQtScript.so.4      deploy
         cp "$path"/libQtXml.so.4         deploy
@@ -103,7 +99,6 @@ elif [ $2 = "linux" ]; then
     else
         cp "$path"/libQt5Core.so.5        deploy
         cp "$path"/libQt5Network.so.5     deploy
-        cp "$path"/libQt5Qml.so.5         deploy
         cp "$path"/libQt5Xml.so.5         deploy
         cp "$path"/libQt5XmlPatterns.so.5 deploy
     fi

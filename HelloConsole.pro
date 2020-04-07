@@ -7,9 +7,9 @@ TARGET = HelloConsole
 DESTDIR = $$_PRO_FILE_PWD_/bin
 
 contains(QT_MAJOR_VERSION, 4) {
-    QT += declarative network script xml xmlpatterns
+    QT += network script xml xmlpatterns
 } else {
-    QT += qml network xml xmlpatterns
+    QT += network xml xmlpatterns
 }
 
 QT -= gui
@@ -18,7 +18,7 @@ CONFIG += console
 
 macx:CONFIG -= app_bundle
 
-DEFINES += SK_CONSOLE SK_CORE_LIBRARY
+DEFINES += SK_CONSOLE SK_NO_QML SK_CORE_LIBRARY
 
 contains(QT_MAJOR_VERSION, 4) {
     DEFINES += QT_4

@@ -192,9 +192,9 @@ if [ "$3" = "deploy" ]; then
 
     if [ $2 = "android" ]; then
 
-        $qmake -r -spec $spec "$config" "DEFINES += SK_DEPLOY" "ANDROID_ABIS = $abi" $HelloConsole
+        $qmake -r -spec $spec "$config" "ANDROID_ABIS = $abi" $HelloConsole
     else
-        $qmake -r -spec $spec "$config" "DEFINES += SK_DEPLOY" $HelloConsole
+        $qmake -r -spec $spec "$config" $HelloConsole
     fi
 else
 

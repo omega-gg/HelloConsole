@@ -115,8 +115,6 @@ elif [ $2 = "android" ]; then
 
     if [ $1 = "qt5" ]; then
 
-        ls -la "$path"
-
         cp "$path"/libQt5Core_*.so        deploy
         cp "$path"/libQt5Network_*.so     deploy
         cp "$path"/libQt5Xml_*.so         deploy

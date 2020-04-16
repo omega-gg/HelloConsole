@@ -87,6 +87,7 @@ elif [ $2 = "macOS" ]; then
         cp "$path"/QtXml.dylib         deploy
         cp "$path"/QtXmlPatterns.dylib deploy
     fi
+
 elif [ $2 = "linux" ]; then
 
     if [ $1 = "qt4" ]; then
@@ -102,6 +103,16 @@ elif [ $2 = "linux" ]; then
         cp "$path"/libQt5Xml.so.5         deploy
         cp "$path"/libQt5XmlPatterns.so.5 deploy
     fi
+
+elif [ $2 = "android" ]; then
+
+    if [ $1 = "qt5" ]; then
+
+        cp "$path"/libQt5Core_*.so        deploy
+        cp "$path"/libQt5Network_*.so     deploy
+        cp "$path"/libQt5Xml_*.so         deploy
+        cp "$path"/libQt5XmlPatterns_*.so deploy
+    fi
 fi
 
 #--------------------------------------------------------------------------------------------------
@@ -110,11 +121,17 @@ fi
 
 echo "COPYING HelloConsole"
 
-if [ $2 = "macOS" ]; then
+if [ $os = "windows" ]; then
+
+    cp bin/libHelloConsole.exe deploy
+
+elif [ $2 = "macOS" ]; then
 
     cp bin/HelloConsole deploy
 
     cd deploy
+
+    #chmod 775 HelloConsole
 
     #----------------------------------------------------------------------------------------------
     # Qt
@@ -138,9 +155,13 @@ if [ $2 = "macOS" ]; then
 
     cd -
 
+elif [ $2 = "linux" ]; then
+
+    cp bin/HelloConsole deploy
+
+    #chmod 755 deploy/HelloConsole
+
 elif [ $2 = "android" ]; then
 
     cp bin/libHelloConsole* deploy
-else
-    cp bin/HelloConsole* deploy
 fi

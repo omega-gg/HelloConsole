@@ -65,7 +65,7 @@ jobs:
       sh build.sh qt5 macOS tools
       cd ../s
       sh build.sh qt5 macOS deploy
-      zip -rq HelloConsole.zip macOS
+      zip -rq HelloConsole.zip deploy
   - publish: $(System.DefaultWorkingDirectory)/HelloConsole.zip
     artifact: HelloConsole-macOS-qt5
 
@@ -81,7 +81,7 @@ jobs:
       docker run -d --name ubuntu -v $PWD:/HelloConsole i386/ubuntu:18.04 tail -f /dev/null
       docker exec -t ubuntu bash -c "cd /HelloConsole;
                                      apt-get update;
-                                     apt-get -y install sudo curl git;
+                                     apt-get -y install sudo curl zip git;
                                      sh 3rdparty.sh linux;
                                      sh configure.sh qt4 linux sky;
                                      cd ../Sky;
@@ -100,7 +100,7 @@ jobs:
       docker run -d --name ubuntu -v $PWD:/HelloConsole i386/ubuntu:18.04 tail -f /dev/null
       docker exec -t ubuntu bash -c "cd /HelloConsole;
                                      apt-get update;
-                                     apt-get -y install sudo curl git;
+                                     apt-get -y install sudo curl zip git;
                                      sh 3rdparty.sh linux;
                                      sh configure.sh qt5 linux sky;
                                      cd ../Sky;
@@ -121,7 +121,7 @@ jobs:
       docker run -d --name ubuntu -v $PWD:/HelloConsole amd64/ubuntu:18.04 tail -f /dev/null
       docker exec -t ubuntu bash -c "cd /HelloConsole;
                                      apt-get update;
-                                     apt-get -y install sudo curl git;
+                                     apt-get -y install sudo curl zip git;
                                      sh 3rdparty.sh linux;
                                      sh configure.sh qt4 linux sky;
                                      cd ../Sky;
@@ -140,7 +140,7 @@ jobs:
       docker run -d --name ubuntu -v $PWD:/HelloConsole amd64/ubuntu:18.04 tail -f /dev/null
       docker exec -t ubuntu bash -c "cd /HelloConsole;
                                      apt-get update;
-                                     apt-get -y install sudo curl git;
+                                     apt-get -y install sudo curl zip git;
                                      sh 3rdparty.sh linux;
                                      sh configure.sh qt5 linux sky;
                                      cd ../Sky;
@@ -163,7 +163,7 @@ jobs:
       docker run -d --name ubuntu -v $PWD:/HelloConsole amd64/ubuntu:18.04 tail -f /dev/null
       docker exec -t ubuntu bash -c "cd /HelloConsole;
                                      apt-get update;
-                                     apt-get -y install sudo curl unzip git;
+                                     apt-get -y install sudo curl zip unzip git;
                                      sh 3rdparty.sh linux;
                                      sh 3rdparty.sh android;
                                      sh configure.sh qt5 android sky;

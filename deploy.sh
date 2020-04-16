@@ -123,7 +123,7 @@ echo "COPYING HelloConsole"
 
 if [ $os = "windows" ]; then
 
-    cp bin/libHelloConsole.exe deploy
+    cp bin/HelloConsole.exe deploy
 
 elif [ $2 = "macOS" ]; then
 
@@ -158,8 +158,6 @@ elif [ $2 = "macOS" ]; then
 elif [ $2 = "linux" ]; then
 
     cp bin/HelloConsole deploy
-
-    #chmod 755 deploy/HelloConsole
 
 elif [ $2 = "android" ]; then
 

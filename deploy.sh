@@ -54,7 +54,14 @@ echo ""
 # Sky
 #--------------------------------------------------------------------------------------------------
 
-echo "COPYING Sky"
+echo "DEPLOYING Sky"
+echo "-------------"
+
+cd "$Sky"
+
+sh deploy.sh $1 $2 tools
+
+cd -
 
 path="$Sky/deploy"
 
@@ -108,12 +115,17 @@ elif [ $2 = "android" ]; then
 
     if [ $1 = "qt5" ]; then
 
+        ls -la "$path"
+
         cp "$path"/libQt5Core_*.so        deploy
         cp "$path"/libQt5Network_*.so     deploy
         cp "$path"/libQt5Xml_*.so         deploy
         cp "$path"/libQt5XmlPatterns_*.so deploy
     fi
 fi
+
+echo "-------------"
+echo ""
 
 #--------------------------------------------------------------------------------------------------
 # HelloConsole

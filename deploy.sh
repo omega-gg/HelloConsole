@@ -144,8 +144,6 @@ elif [ $2 = "macOS" ]; then
     # FIXME Qt 5.14: We have to create qt.conf to avoid a segfault.
     touch qt.conf
 
-    #chmod 775 HelloConsole
-
     #----------------------------------------------------------------------------------------------
     # Qt
 

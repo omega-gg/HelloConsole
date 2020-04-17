@@ -89,6 +89,9 @@ elif [ $2 = "macOS" ]; then
 
     if [ $1 = "qt5" ]; then
 
+        # FIXME Qt 5.14 macOS: We have to copy qt.conf to avoid a segfault.
+        cp "$path"/qt.conf deploy
+
         cp "$path"/QtCore.dylib        deploy
         cp "$path"/QtNetwork.dylib     deploy
         cp "$path"/QtXml.dylib         deploy
@@ -140,9 +143,6 @@ elif [ $2 = "macOS" ]; then
     cp bin/HelloConsole deploy
 
     cd deploy
-
-    # FIXME Qt 5.14: We have to create qt.conf to avoid a segfault.
-    touch qt.conf
 
     #----------------------------------------------------------------------------------------------
     # Qt

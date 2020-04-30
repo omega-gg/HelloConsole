@@ -151,8 +151,6 @@ else
     export QT_SELECT=qt5
 fi
 
-build="build"
-
 config="CONFIG += release"
 
 if [ $os = "windows" ]; then
@@ -186,7 +184,7 @@ fi
 $qmake --version
 echo ""
 
-cd $build
+cd build
 
 if [ $2 = "android" ]; then
 

@@ -5,8 +5,6 @@ set -e
 # Settings
 #--------------------------------------------------------------------------------------------------
 
-HelloConsole=".."
-
 external="$PWD/../3rdparty"
 
 #--------------------------------------------------------------------------------------------------
@@ -188,9 +186,9 @@ cd build
 
 if [ $2 = "android" ]; then
 
-    $qmake -r -spec $spec "$config" "ANDROID_ABIS = $abi" $HelloConsole
+    $qmake -r -spec $spec "$config" "ANDROID_ABIS = $abi" ..
 else
-    $qmake -r -spec $spec "$config" $HelloConsole
+    $qmake -r -spec $spec "$config" ..
 fi
 
 if [ $os = "windows" ]; then
@@ -199,6 +197,8 @@ if [ $os = "windows" ]; then
 else
     make $make_arguments
 fi
+
+cd -
 
 echo "------------------"
 
@@ -211,8 +211,6 @@ if [ "$3" = "deploy" ]; then
     echo ""
     echo "DEPLOYING HelloConsole"
     echo "----------------------"
-
-    cd $HelloConsole
 
     sh deploy.sh $1 $2
 

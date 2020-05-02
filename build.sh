@@ -149,7 +149,7 @@ else
     export QT_SELECT=qt5
 fi
 
-config="CONFIG += release"
+config="CONFIG+=release"
 
 if [ $os = "windows" ]; then
 
@@ -186,7 +186,7 @@ cd build
 
 if [ $2 = "android" ]; then
 
-    $qmake -r -spec $spec "$config" "ANDROID_ABIS = $abi" ..
+    $qmake -r -spec $spec "$config" "ANDROID_ABIS=$abi" ..
 else
     $qmake -r -spec $spec "$config" ..
 fi

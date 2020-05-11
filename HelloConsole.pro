@@ -26,7 +26,7 @@ contains(QT_MAJOR_VERSION, 4) {
     DEFINES += QT_LATEST
 }
 
-QMAKE_CXXFLAGS += -std=c++11
+!msvc:QMAKE_CXXFLAGS += -std=c++11
 
 unix:QMAKE_LFLAGS += "-Wl,-rpath,'\$$ORIGIN'"
 
@@ -39,6 +39,9 @@ include(src/thread/thread.pri)
 include(src/3rdparty/qtsingleapplication/qtsingleapplication.pri)
 
 INCLUDEPATH += $$SK/include/SkCore \
+
+# Windows dependency for ShellExecuteA
+msvc:LIBS += shell32.lib
 
 OTHER_FILES += 3rdparty.sh \
                configure.sh \

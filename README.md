@@ -43,13 +43,13 @@ You can configure HelloConsole with:
 
 You can build HelloConsole with:
 
-    sh build.sh <qt4 | qt5 | clean> <win32 | win64 | macOS | linux> [deploy]
+    sh build.sh <qt4 | qt5 | clean> <win32 | win64 | macOS | linux | android> [deploy]
 
 ## Deploy
 
 You can deploy HelloConsole with:
 
-    sh deploy.sh <qt4 | qt5 | clean> <win32 | win64 | macOS | linux>
+    sh deploy.sh <qt4 | qt5 | clean> <win32 | win64 | macOS | linux | android>
 
 ## License
 

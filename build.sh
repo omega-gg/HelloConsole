@@ -21,6 +21,10 @@ make_arguments="-j 4"
 
 ProgramFiles="/c/Program Files (x86)"
 
+BuildTools="$ProgramFiles/Microsoft Visual Studio/2019/BuildTools"
+
+#--------------------------------------------------------------------------------------------------
+
 MinGW_version="7.3.0"
 
 MSVC_version="14.25.28610"
@@ -107,7 +111,7 @@ if [ $2 = "win32" -o $2 = "win64" -o $2 = "win32-msvc" -o $2 = "win64-msvc" ]; t
     else
         compiler="msvc"
 
-        MSVC="$ProgramFiles/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/$MSVC_version"
+        MSVC="$BuildTools/VC/Tools/MSVC/$MSVC_version"
 
         WindowsKit="$ProgramFiles/Windows Kits/$WindowsKit_versionA"
     fi

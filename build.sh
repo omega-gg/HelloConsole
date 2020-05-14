@@ -166,8 +166,7 @@ if [ $1 = "clean" ]; then
     echo "CLEANING"
 
     rm -rf build/*
-
-    touch build/.gitignore
+    touch  build/.gitignore
 
     exit 0
 fi

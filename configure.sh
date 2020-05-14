@@ -56,12 +56,10 @@ fi
 echo "CLEANING"
 
 rm -rf bin/*
-
-touch bin/.gitignore
+touch  bin/.gitignore
 
 rm -rf build/*
-
-touch build/.gitignore
+touch  build/.gitignore
 
 if [ $1 = "clean" ]; then
 

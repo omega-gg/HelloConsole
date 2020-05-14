@@ -114,13 +114,13 @@ if [ $2 = "win32" -o $2 = "win64" -o $2 = "win32-msvc" -o $2 = "win64-msvc" ]; t
         MSVC="$BuildTools/VC/Tools/MSVC/$MSVC_version"
 
         WindowsKit="$ProgramFiles/Windows Kits/$WindowsKit_versionA"
-    fi
 
-    if [ $2 = "win32" -o $2 = "win32-msvc" ]; then
+        if [ $2 = "win32-msvc" ]; then
 
-        target="x86"
-    else
-        target="x64"
+            target="x86"
+        else
+            target="x64"
+        fi
     fi
 
 elif [ $2 = "android" ]; then

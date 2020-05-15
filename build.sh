@@ -169,7 +169,9 @@ if [ $1 = "clean" ]; then
 
     echo "CLEANING"
 
-    rm -rf build/*
+    # NOTE: We have to remove the folder to delete .qmake.stash.
+    rm -rf build
+    mkdir  build
     touch  build/.gitignore
 
     exit 0
@@ -199,7 +201,12 @@ if [ $compiler = "mingw" ]; then
 
 elif [ $compiler = "msvc" ]; then
 
-    spec=win32-msvc
+    if [ $1 = "qt4" ]; then
+
+        spec=win32-msvc2015
+    else
+        spec=win32-msvc
+    fi
 
     PATH="$jom:$MSVC/bin/Host$target/$target:\
 $WindowsKit/bin/$WindowsKit_versionB/$target:\

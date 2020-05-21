@@ -3,7 +3,7 @@ HelloConsole
 [![azure](https://dev.azure.com/bunjee/HelloConsole/_apis/build/status/omega-gg.HelloConsole)](https://dev.azure.com/bunjee/HelloConsole/_build)
 [![GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl.html)
 
-[HelloConsole](http://omega.gg/HelloConsole) is a "Hello World" console application built with Sky kit.<br>
+HelloConsole is a "Hello World" console application built with Sky kit.<br>
 
 ## Technology
 

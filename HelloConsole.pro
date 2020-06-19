@@ -12,8 +12,6 @@ contains(QT_MAJOR_VERSION, 4) {
     QT += network xml xmlpatterns
 }
 
-QT -= gui
-
 CONFIG += console
 
 macx:CONFIG -= app_bundle

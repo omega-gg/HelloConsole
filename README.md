@@ -37,7 +37,7 @@ You can install third party libraries with:
 
 You can configure HelloConsole with:
 
-    sh configure.sh <win32 | win64 | macOS | linux | android> [sky]
+    sh configure.sh <win32 | win64 | macOS | linux | android> [sky | clean]
 
 ## Build
 

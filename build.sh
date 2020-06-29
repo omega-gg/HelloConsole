@@ -92,11 +92,38 @@ if [ $# != 1 -a $# != 2 ] \
    || \
    [ $1 != "win32" -a $1 != "win64" -a $1 != "macOS" -a $1 != "linux" -a $1 != "android" ] \
    || \
-   [ $# = 2 -a "$2" != "deploy" -a "$2" != "clean" ]; then
+   [ $# = 2 -a "$2" != "all" -a "$2" != "deploy" -a "$2" != "clean" ]; then
 
-    echo "Usage: build <win32 | win64 | macOS | linux | android> [deploy | clean]"
+    echo "Usage: build <win32 | win64 | macOS | linux | android> [all | deploy | clean]"
 
     exit 1
+fi
+
+#--------------------------------------------------------------------------------------------------
+# All
+#--------------------------------------------------------------------------------------------------
+
+if [ "$2" = "all" ]; then
+
+    sh 3rdparty.sh $1
+
+    cd ../Sky
+
+    sh environment $compiler_win $qt
+
+    cd -
+
+    sh configure.sh $1 sky
+
+    cd ../Sky
+
+    sh build.sh $1 tools
+
+    cd -
+
+    sh build.sh $1 deploy
+
+    exit 0
 fi
 
 #--------------------------------------------------------------------------------------------------

@@ -13,8 +13,7 @@ source="https://github.com/omega-gg"
 
 if [ $# != 1 ] \
    || \
-   [ $1 != "win32" -a $1 != "win64" -a $1 != "win32-msvc" -a $1 != "win64-msvc" -a \
-     $1 != "macOS" -a $1 != "linux" -a $1 != "android" ]; then
+   [ $1 != "win32" -a $1 != "win64" -a $1 != "macOS" -a $1 != "linux" -a $1 != "android" ]; then
 
     echo "Usage: 3rdparty <win32 | win64 | win32-msvc | win64-msvc | macOS | linux | android>"
 

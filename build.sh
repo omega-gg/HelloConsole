@@ -109,7 +109,7 @@ if [ "$2" = "all" ]; then
 
     cd ../Sky
 
-    sh environment $compiler_win $qt
+    sh environment.sh $compiler_win $qt
 
     cd -
 

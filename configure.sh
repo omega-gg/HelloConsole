@@ -15,21 +15,23 @@ external="../3rdparty"
 MinGW_version="7.3.0"
 
 #--------------------------------------------------------------------------------------------------
+# environment
+
+compiler_win="mingw"
+
+qt="qt5"
+
+#--------------------------------------------------------------------------------------------------
 # Syntax
 #--------------------------------------------------------------------------------------------------
 
-if [ $# != 2 -a $# != 3 ] \
+if [ $# != 2 -a $# != 2 ] \
    || \
-   [ $1 != "qt4" -a $1 != "qt5" -a $1 != "clean" ] \
+   [ $1 != "win32" -a $1 != "win64" -a $1 != "macOS" -a $1 != "linux" -a $1 != "android" ] \
    || \
-   [ $2 != "win32" -a $2 != "win64" -a $2 != "win32-msvc" -a $2 != "win64-msvc" -a \
-     $2 != "macOS" -a $2 != "linux" -a $2 != "android" ] \
-   || \
-   [ $# = 3 -a "$3" != "sky" ]; then
+   [ $# = 2 -a "$2" != "sky" -a "$2" != "clean" ]; then
 
-    echo "Usage: configure <qt4 | qt5 | clean>"
-    echo "                 <win32 | win64 | win32-msvc | win64-msvc | macOS | linux | android>"
-    echo "                 [sky]"
+    echo "Usage: configure <win32 | win64 | macOS | linux | android> [sky | clean]"
 
     exit 1
 fi
@@ -38,11 +40,11 @@ fi
 # Configuration
 #--------------------------------------------------------------------------------------------------
 
-external="$external/$2"
+external="$external/$1"
 
-if [ $2 = "win32" -o $2 = "win64" ]; then
+if [ $1 = "win32" -o $1 = "win64" ]; then
 
-    compiler="mingw"
+    compiler="$compiler_win"
 
     MinGW="$external/MinGW/$MinGW_version/bin"
 else
@@ -63,7 +65,7 @@ rm -rf build
 mkdir  build
 touch  build/.gitignore
 
-if [ $1 = "clean" ]; then
+if [ "$2" = "clean" ]; then
 
     exit 0
 fi
@@ -72,14 +74,14 @@ fi
 # Sky
 #--------------------------------------------------------------------------------------------------
 
-if [ "$3" = "sky" ]; then
+if [ "$2" = "sky" ]; then
 
     echo "CONFIGURING Sky"
     echo "---------------"
 
     cd "$Sky"
 
-    sh configure.sh $1 $2
+    sh configure.sh $1
 
     cd -
 

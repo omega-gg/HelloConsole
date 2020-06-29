@@ -45,6 +45,7 @@ OTHER_FILES += 3rdparty.sh \
                configure.sh \
                build.sh \
                deploy.sh \
+               environment.sh \
                README.md \
                LICENSE.md \
                AUTHORS.md \

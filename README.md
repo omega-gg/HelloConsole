@@ -31,30 +31,25 @@ Recommended:
 
 You can install third party libraries with:
 
-    sh 3rdparty.sh <win32 | win64 | win32-msvc | win64-msvc | macOS | linux | android>
+    sh 3rdparty.sh <win32 | win64 | macOS | linux | android>
 
 ## Configure
 
 You can configure HelloConsole with:
 
-    sh configure.sh <qt4 | qt5 | clean>
-                    <win32 | win64 | win32-msvc | win64-msvc | macOS | linux | android>
-                    [sky]
+    sh configure.sh <win32 | win64 | macOS | linux | android> [sky]
 
 ## Build
 
 You can build HelloConsole with:
 
-    sh build.sh <qt4 | qt5 | clean>
-                <win32 | win64 | win32-msvc | win64-msvc | macOS | linux | android>
-                [deploy]
+    sh build.sh <win32 | win64 | macOS | linux | android> [deploy | clean]
 
 ## Deploy
 
 You can deploy HelloConsole with:
 
-    sh deploy.sh <qt4 | qt5 | clean>
-                 <win32 | win64 | win32-msvc | win64-msvc | macOS | linux | android>
+    sh deploy.sh <win32 | win64 | macOS | linux | android> [clean]
 
 ## License
 

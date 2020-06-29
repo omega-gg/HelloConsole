@@ -8,16 +8,23 @@ set -e
 Sky="../Sky"
 
 #--------------------------------------------------------------------------------------------------
+# environment
+
+compiler_win="mingw"
+
+qt="qt5"
+
+#--------------------------------------------------------------------------------------------------
 # Syntax
 #--------------------------------------------------------------------------------------------------
 
-if [ $# != 2 ] || [ $1 != "qt4" -a $1 != "qt5" -a $1 != "clean" ] \
+if [ $# != 1 -a $# != 2 ] \
    || \
-   [ $2 != "win32" -a $2 != "win64" -a $2 != "win32-msvc" -a $2 != "win64-msvc" -a \
-     $2 != "macOS" -a $2 != "linux" -a $2 != "android" ]; then
+   [ $1 != "win32" -a $1 != "win64" -a $1 != "macOS" -a $1 != "linux" -a $1 != "android" ] \
+   || \
+   [ $# = 2 -a "$2" != "clean" ]; then
 
-    echo "Usage: deploy <qt4 | qt5 | clean>"
-    echo "              <win32 | win64 | win32-msvc | win64-msvc | macOS | linux | android>"
+    echo "Usage: deploy <win32 | win64 | macOS | linux | android> [clean]"
 
     exit 1
 fi
@@ -26,16 +33,11 @@ fi
 # Configuration
 #--------------------------------------------------------------------------------------------------
 
-if [ $2 = "win32" -o $2 = "win64" -o $2 = "win32-msvc" -o $2 = "win64-msvc" ]; then
+if [ $1 = "win32" -o $1 = "win64" ]; then
 
     os="windows"
 
-    if [ $2 = "win32" -o $2 = "win64" ]; then
-
-        compiler="mingw"
-    else
-        compiler="default"
-    fi
+    compiler="$compiler_win"
 else
     os="default"
 
@@ -52,7 +54,7 @@ rm -rf deploy/*
 
 touch deploy/.gitignore
 
-if [ $1 = "clean" ]; then
+if [ "$2" = "clean" ]; then
 
     exit 0
 fi
@@ -68,7 +70,7 @@ echo "-------------"
 
 cd "$Sky"
 
-sh deploy.sh $1 $2 tools
+sh deploy.sh $1 tools
 
 cd -
 
@@ -83,7 +85,7 @@ if [ $os = "windows" ]; then
         cp "$path"/libwinpthread-1.dll deploy
     fi
 
-    if [ $1 = "qt4" ]; then
+    if [ $qt = "qt4" ]; then
 
         cp "$path"/QtCore4.dll        deploy
         cp "$path"/QtNetwork4.dll     deploy
@@ -97,9 +99,9 @@ if [ $os = "windows" ]; then
         cp "$path"/Qt5XmlPatterns.dll deploy
     fi
 
-elif [ $2 = "macOS" ]; then
+elif [ $1 = "macOS" ]; then
 
-    if [ $1 = "qt5" ]; then
+    if [ $qt = "qt5" ]; then
 
         # FIXME Qt 5.14 macOS: We have to copy qt.conf to avoid a segfault.
         cp "$path"/qt.conf deploy
@@ -110,9 +112,9 @@ elif [ $2 = "macOS" ]; then
         cp "$path"/QtXmlPatterns.dylib deploy
     fi
 
-elif [ $2 = "linux" ]; then
+elif [ $1 = "linux" ]; then
 
-    if [ $1 = "qt4" ]; then
+    if [ $qt = "qt4" ]; then
 
         cp "$path"/libQtCore.so.4        deploy
         cp "$path"/libQtNetwork.so.4     deploy
@@ -126,9 +128,9 @@ elif [ $2 = "linux" ]; then
         cp "$path"/libQt5XmlPatterns.so.5 deploy
     fi
 
-elif [ $2 = "android" ]; then
+elif [ $1 = "android" ]; then
 
-    if [ $1 = "qt5" ]; then
+    if [ $qt = "qt5" ]; then
 
         cp "$path"/libQt5Core_*.so        deploy
         cp "$path"/libQt5Network_*.so     deploy
@@ -150,7 +152,7 @@ if [ $os = "windows" ]; then
 
     cp bin/HelloConsole.exe deploy
 
-elif [ $2 = "macOS" ]; then
+elif [ $1 = "macOS" ]; then
 
     cp bin/HelloConsole deploy
 
@@ -178,11 +180,11 @@ elif [ $2 = "macOS" ]; then
 
     cd -
 
-elif [ $2 = "linux" ]; then
+elif [ $1 = "linux" ]; then
 
     cp bin/HelloConsole deploy
 
-elif [ $2 = "android" ]; then
+elif [ $1 = "android" ]; then
 
     cp bin/libHelloConsole* deploy
 fi

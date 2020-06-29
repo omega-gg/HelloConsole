@@ -19,24 +19,24 @@ qt="qt5"
 
 replace()
 {
-    expression='s/$1=\"'"$2"'"/$1=\"'"$3"'"/g'
+    expression='s/'"$1"'=\"'"$2"'"/'"$1"'=\"'"$3"'"/g'
 
-    sed -i $1 environment.sh
+    sed -i $expression environment.sh
 
-    sed -i $1 configure.sh
-    sed -i $1 build.sh
-    sed -i $1 deploy.sh
+    sed -i $expression configure.sh
+    sed -i $expression build.sh
+    sed -i $expression deploy.sh
 }
 
 #--------------------------------------------------------------------------------------------------
 # Syntax
 #--------------------------------------------------------------------------------------------------
 
-if [ $# != 2 -a $# != 2 ] \
+if [ $# != 2 -a $# != 3 ] \
    || \
    [ $1 != "mingw" -a $1 != "msvc" ] || [ $2 != "qt4" -a $2 != "qt5" ] \
    || \
-   [ $# = 2 -a "$2" != "sky" ]; then
+   [ $# = 3 -a "$3" != "sky" ]; then
 
     echo "Usage: environment <mingw | msvc> <qt4 | qt5> [sky]"
 

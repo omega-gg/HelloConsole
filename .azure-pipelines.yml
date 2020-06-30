@@ -74,7 +74,7 @@ jobs:
     vmImage: "macOS-latest"
   steps:
   - bash: |
-      sh environment.sh gcc qt5
+      sh environment.sh mingw qt5
       sh build.sh macOS all
       cd deploy
       zip -rq ../HelloConsole.zip *
@@ -94,7 +94,7 @@ jobs:
       docker exec -t ubuntu bash -c "cd /HelloConsole;
                                      apt-get update;
                                      apt-get -y install sudo curl zip git;
-                                     sh environment.sh gcc qt4;
+                                     sh environment.sh mingw qt4;
                                      sh build.sh linux all;
                                      cd deploy;
                                      zip -rq ../HelloConsole.zip *"
@@ -110,7 +110,7 @@ jobs:
       docker exec -t ubuntu bash -c "cd /HelloConsole;
                                      apt-get update;
                                      apt-get -y install sudo curl zip git;
-                                     sh environment.sh gcc qt5;
+                                     sh environment.sh mingw qt5;
                                      sh build.sh linux all;
                                      cd deploy;
                                      zip -rq ../HelloConsole.zip *"
@@ -128,7 +128,7 @@ jobs:
       docker exec -t ubuntu bash -c "cd /HelloConsole;
                                      apt-get update;
                                      apt-get -y install sudo curl zip git;
-                                     sh environment.sh gcc qt4;
+                                     sh environment.sh mingw qt4;
                                      sh build.sh linux all;
                                      cd deploy;
                                      zip -rq ../HelloConsole.zip *"
@@ -144,7 +144,7 @@ jobs:
       docker exec -t ubuntu bash -c "cd /HelloConsole;
                                      apt-get update;
                                      apt-get -y install sudo curl zip git;
-                                     sh environment.sh gcc qt5;
+                                     sh environment.sh mingw qt5;
                                      sh build.sh linux all;
                                      cd deploy;
                                      zip -rq ../HelloConsole.zip *"
@@ -165,7 +165,7 @@ jobs:
                                      apt-get update;
                                      apt-get -y install sudo curl zip unzip git;
                                      sh 3rdparty.sh linux;
-                                     sh environment.sh gcc qt5;
+                                     sh environment.sh mingw qt5;
                                      sh build.sh android all;
                                      cd deploy;
                                      zip -rq ../HelloConsole.zip *"

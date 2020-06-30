@@ -21,9 +21,7 @@ replace()
 {
     expression='s/'"$1"'=\"'"$2"'"/'"$1"'=\"'"$3"'"/g'
 
-    os=`uname`
-
-    case $os in
+    case `uname` in
     Darwin*) os="macOS";;
     *)       os="other";;
     esac

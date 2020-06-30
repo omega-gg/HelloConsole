@@ -21,7 +21,7 @@ replace()
 {
     expression='s/'"$1"'=\"'"$2"'"/'"$1"'=\"'"$3"'"/g'
 
-    if [ `uname` = "macOS" ]; then
+    if [ $(`uname`) = "macOS" ]; then
 
         sed -i "" $expression environment.sh
 

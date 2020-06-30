@@ -45,7 +45,7 @@ fi
 
 cd Sky
 
-if [ "$2" != "all" ]; then
+if [ "$2" = "all" ]; then
 
     sh environment.sh $compiler_win $qt
 

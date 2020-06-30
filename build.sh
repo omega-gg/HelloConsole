@@ -105,13 +105,7 @@ fi
 
 if [ "$2" = "all" ]; then
 
-    sh 3rdparty.sh $1
-
-    cd ../Sky
-
-    sh environment.sh $compiler_win $qt
-
-    cd -
+    sh 3rdparty.sh $1 all
 
     sh configure.sh $1 sky
 

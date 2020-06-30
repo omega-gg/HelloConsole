@@ -17,19 +17,19 @@ qt="qt5"
 # Functions
 #--------------------------------------------------------------------------------------------------
 
-replaceAll()
+replace()
 {
     expression='s/'"$1"'=\"'"$2"'"/'"$1"'=\"'"$3"'"/g'
 
-    replace $expression environment.sh
+    apply $expression environment.sh
 
-    replace $expression 3rdparty.sh
-    replace $expression configure.sh
-    replace $expression build.sh
-    replace $expression deploy.sh
+    apply $expression 3rdparty.sh
+    apply $expression configure.sh
+    apply $expression build.sh
+    apply $expression deploy.sh
 }
 
-replace()
+apply()
 {
     if [ $host = "macOS" ]; then
 

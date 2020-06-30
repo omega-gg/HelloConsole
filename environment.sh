@@ -17,31 +17,36 @@ qt="qt5"
 # Functions
 #--------------------------------------------------------------------------------------------------
 
-replace()
+replaceAll()
 {
     expression='s/'"$1"'=\"'"$2"'"/'"$1"'=\"'"$3"'"/g'
 
-    case `uname` in
-    Darwin*) os="macOS";;
-    *)       os="other";;
-    esac
+    replace $expression environment.sh
 
-    if [ $os = "macOS" ]; then
+    replace $expression 3rdparty.sh
+    replace $expression configure.sh
+    replace $expression build.sh
+    replace $expression deploy.sh
+}
 
-        sed -i "" $expression environment.sh
+replace()
+{
+    if [ $host = "macOS" ]; then
 
-        sed -i "" $expression 3rdparty.sh
-        sed -i "" $expression configure.sh
-        sed -i "" $expression build.sh
-        sed -i "" $expression deploy.sh
+        sed -i "" $1 $2
     else
-        sed -i $expression environment.sh
-
-        sed -i $expression 3rdparty.sh
-        sed -i $expression configure.sh
-        sed -i $expression build.sh
-        sed -i $expression deploy.sh
+        sed -i $1 $2
     fi
+}
+
+#--------------------------------------------------------------------------------------------------
+
+getOs()
+{
+    case `uname` in
+    Darwin*) echo "macOS";;
+    *)       echo "other";;
+    esac
 }
 
 #--------------------------------------------------------------------------------------------------
@@ -58,6 +63,12 @@ if [ $# != 2 -a $# != 3 ] \
 
     exit 1
 fi
+
+#--------------------------------------------------------------------------------------------------
+# Configuration
+#--------------------------------------------------------------------------------------------------
+
+host=$(getOs)
 
 #--------------------------------------------------------------------------------------------------
 # Sky

@@ -21,12 +21,22 @@ replace()
 {
     expression='s/'"$1"'=\"'"$2"'"/'"$1"'=\"'"$3"'"/g'
 
-    sed -i $expression environment.sh
+    if [ `uname` = "macOS" ]; then
 
-    sed -i $expression 3rdparty.sh
-    sed -i $expression configure.sh
-    sed -i $expression build.sh
-    sed -i $expression deploy.sh
+        sed -i "" $expression environment.sh
+
+        sed -i "" $expression 3rdparty.sh
+        sed -i "" $expression configure.sh
+        sed -i "" $expression build.sh
+        sed -i "" $expression deploy.sh
+    else
+        sed -i $expression environment.sh
+
+        sed -i $expression 3rdparty.sh
+        sed -i $expression configure.sh
+        sed -i $expression build.sh
+        sed -i $expression deploy.sh
+    fi
 }
 
 #--------------------------------------------------------------------------------------------------

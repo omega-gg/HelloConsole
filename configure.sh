@@ -46,7 +46,10 @@ if [ $1 = "win32" -o $1 = "win64" ]; then
 
     compiler="$compiler_win"
 
-    MinGW="$external/MinGW/$MinGW_version/bin"
+    if [ $compiler = "mingw" ]; then
+
+        MinGW="$external/MinGW/$MinGW_version/bin"
+    fi
 else
     compiler="default"
 fi

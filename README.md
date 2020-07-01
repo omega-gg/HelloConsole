@@ -31,7 +31,7 @@ Recommended:
 
 You can install third party libraries with:
 
-    sh 3rdparty.sh <win32 | win64 | macOS | linux | android>
+    sh 3rdparty.sh <win32 | win64 | macOS | linux | android> [all]
 
 ## Configure
 
@@ -43,7 +43,7 @@ You can configure HelloConsole with:
 
 You can build HelloConsole with:
 
-    sh build.sh <win32 | win64 | macOS | linux | android> [deploy | clean]
+    sh build.sh <win32 | win64 | macOS | linux | android> [all | deploy | clean]
 
 ## Deploy
 

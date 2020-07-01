@@ -130,14 +130,12 @@ if [ $1 = "win32" -o $1 = "win64" ]; then
 
     os="windows"
 
-    if [ $compiler_win = "mingw" ]; then
+    compiler="$compiler_win"
 
-        compiler="$compiler_win"
+    if [ $compiler = "mingw" ]; then
 
         MinGW="$external/MinGW/$MinGW_version/bin"
     else
-        compiler="$compiler_win"
-
         jom="$external/jom/$jom_version"
 
         MSVC_version=$(getPath "$BuildTools/VC/Tools/MSVC" $MSVC_version)

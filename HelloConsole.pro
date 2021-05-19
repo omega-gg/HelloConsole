@@ -16,6 +16,10 @@ CONFIG += console
 
 macx:CONFIG -= app_bundle
 
+contains(QT_MAJOR_VERSION, 5) {
+    android:QT += androidextras
+}
+
 DEFINES += SK_CONSOLE SK_NO_QML SK_CORE_LIBRARY
 
 contains(QT_MAJOR_VERSION, 4) {

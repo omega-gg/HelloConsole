@@ -5,6 +5,8 @@ set -e
 # Settings
 #--------------------------------------------------------------------------------------------------
 
+target="HelloConsole"
+
 Sky="../Sky"
 
 #--------------------------------------------------------------------------------------------------
@@ -146,15 +148,15 @@ echo ""
 # HelloConsole
 #--------------------------------------------------------------------------------------------------
 
-echo "COPYING HelloConsole"
+echo "COPYING $target"
 
 if [ $os = "windows" ]; then
 
-    cp bin/HelloConsole.exe deploy
+    cp bin/$target.exe deploy
 
 elif [ $1 = "macOS" ]; then
 
-    cp bin/HelloConsole deploy
+    cp bin/$target deploy
 
     cd deploy
 
@@ -162,19 +164,19 @@ elif [ $1 = "macOS" ]; then
     # Qt
 
     install_name_tool -change @rpath/QtCore.framework/Versions/5/QtCore \
-                              @loader_path/QtCore.dylib HelloConsole
+                              @loader_path/QtCore.dylib $target
 
     install_name_tool -change @rpath/QtNetwork.framework/Versions/5/QtNetwork \
-                              @loader_path/QtNetwork.dylib HelloConsole
+                              @loader_path/QtNetwork.dylib $target
 
     install_name_tool -change @rpath/QtQml.framework/Versions/5/QtQml \
-                              @loader_path/QtQml.dylib HelloConsole
+                              @loader_path/QtQml.dylib $target
 
     install_name_tool -change @rpath/QtXml.framework/Versions/5/QtXml \
-                              @loader_path/QtXml.dylib HelloConsole
+                              @loader_path/QtXml.dylib $target
 
     install_name_tool -change @rpath/QtXmlPatterns.framework/Versions/5/QtXmlPatterns \
-                              @loader_path/QtXmlPatterns.dylib HelloConsole
+                              @loader_path/QtXmlPatterns.dylib $target
 
     #----------------------------------------------------------------------------------------------
 
@@ -182,9 +184,9 @@ elif [ $1 = "macOS" ]; then
 
 elif [ $1 = "linux" ]; then
 
-    cp bin/HelloConsole deploy
+    cp bin/$target deploy
 
 elif [ $1 = "android" ]; then
 
-    cp bin/libHelloConsole* deploy
+    cp bin/lib$target* deploy
 fi

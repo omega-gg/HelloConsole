@@ -12,7 +12,11 @@ contains(QT_MAJOR_VERSION, 4) {
     QT += network xml xmlpatterns
 }
 
-QT -= gui
+# NOTE: This makes sure we don't build against the gui dependency. It does not work for Qt4
+#       because we need QDesktopServices.
+contains(QT_MAJOR_VERSION, 5) {
+    QT -= gui
+}
 
 CONFIG += console
 

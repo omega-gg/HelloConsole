@@ -47,7 +47,8 @@ cd Sky
 
 if [ "$2" = "all" ]; then
 
-    sh environment.sh $compiler_win $qt
+    sh environment.sh $compiler_win
+    sh environment.sh $qt
 
     sh 3rdparty.sh $1 all
 else

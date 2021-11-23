@@ -35,20 +35,9 @@ contains(QT_MAJOR_VERSION, 4) {
 
 DEFINES += SK_CONSOLE SK_NO_QML SK_CORE_LIBRARY
 
-contains(QT_MAJOR_VERSION, 4) {
-    DEFINES += QT_4
-} else {
-    DEFINES += QT_LATEST
-}
-
-android {
-    DEFINES += SK_MOBILE
-} else {
-    DEFINES += SK_DESKTOP
-}
-
 unix:QMAKE_LFLAGS += "-Wl,-rpath,'\$$ORIGIN'"
 
+include($$SK/src/Sk.pri)
 include(src/global/global.pri)
 include(src/controllers/controllers.pri)
 include(src/kernel/kernel.pri)

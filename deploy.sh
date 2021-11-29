@@ -46,6 +46,19 @@ else
     compiler="default"
 fi
 
+if [ $qt = "qt5" ]; then
+
+    QtX="Qt5"
+
+    qx="5"
+
+elif [ $qt = "qt6" ]; then
+
+    QtX="Qt6"
+
+    qx="6"
+fi
+
 #--------------------------------------------------------------------------------------------------
 # Clean
 #--------------------------------------------------------------------------------------------------
@@ -95,23 +108,35 @@ if [ $os = "windows" ]; then
         cp "$path"/QtXml4.dll         deploy
         cp "$path"/QtXmlPatterns4.dll deploy
     else
-        cp "$path"/Qt5Core.dll        deploy
-        cp "$path"/Qt5Network.dll     deploy
-        cp "$path"/Qt5Xml.dll         deploy
-        cp "$path"/Qt5XmlPatterns.dll deploy
+        cp "$path"/"$QtX"Core.dll    deploy
+        cp "$path"/"$QtX"Network.dll deploy
+        cp "$path"/"$QtX"Xml.dll     deploy
+
+        if [ $qt = "qt5" ]; then
+
+            cp "$path"/"$QtX"XmlPatterns.dll deploy
+        else
+            cp "$path"/"$QtX"Core5Compat.dll deploy
+        fi
     fi
 
 elif [ $1 = "macOS" ]; then
 
-    if [ $qt = "qt5" ]; then
+    if [ $qt != "qt4" ]; then
 
         # FIXME Qt 5.14 macOS: We have to copy qt.conf to avoid a segfault.
         cp "$path"/qt.conf deploy
 
-        cp "$path"/QtCore.dylib        deploy
-        cp "$path"/QtNetwork.dylib     deploy
-        cp "$path"/QtXml.dylib         deploy
-        cp "$path"/QtXmlPatterns.dylib deploy
+        cp "$path"/QtCore.dylib    deploy
+        cp "$path"/QtNetwork.dylib deploy
+        cp "$path"/QtXml.dylib     deploy
+
+        if [ $qt = "qt5" ]; then
+
+            cp "$path"/QtXmlPatterns.dylib deploy
+        else
+            cp "$path"/QtCore5Compat.dylib deploy
+        fi
     fi
 
 elif [ $1 = "linux" ]; then
@@ -124,20 +149,32 @@ elif [ $1 = "linux" ]; then
         cp "$path"/libQtXml.so.4         deploy
         cp "$path"/libQtXmlPatterns.so.4 deploy
     else
-        cp "$path"/libQt5Core.so.5        deploy
-        cp "$path"/libQt5Network.so.5     deploy
-        cp "$path"/libQt5Xml.so.5         deploy
-        cp "$path"/libQt5XmlPatterns.so.5 deploy
+        cp "$path"/lib"$QtX"Core.so.5    deploy
+        cp "$path"/lib"$QtX"Network.so.5 deploy
+        cp "$path"/lib"$QtX"Xml.so.5     deploy
+
+        if [ $qt = "qt5" ]; then
+
+            cp "$path"/lib"$QtX"XmlPatterns.so.$qx deploy
+        else
+            cp "$path"/lib"$QtX"Core5Compat.so.$qx deploy
+        fi
     fi
 
 elif [ $1 = "android" ]; then
 
-    if [ $qt = "qt5" ]; then
+    if [ $qt != "qt4" ]; then
 
-        cp "$path"/libQt5Core_*.so        deploy
-        cp "$path"/libQt5Network_*.so     deploy
-        cp "$path"/libQt5Xml_*.so         deploy
-        cp "$path"/libQt5XmlPatterns_*.so deploy
+        cp "$path"/lib"$QtX"Core_*.so    deploy
+        cp "$path"/lib"$QtX"Network_*.so deploy
+        cp "$path"/lib"$QtX"Xml_*.so     deploy
+
+        if [ $qt = "qt5" ]; then
+
+            cp "$path"/lib"$QtX"XmlPatterns_*.so deploy
+        else
+            cp "$path"/lib"$QtX"Core5Compat_*.so deploy
+        fi
     fi
 fi
 

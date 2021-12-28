@@ -64,3 +64,4 @@ OTHER_FILES += 3rdparty.sh \
                LICENSE.md \
                AUTHORS.md \
                .azure-pipelines.yml \
+               .appveyor.yml \

@@ -7,19 +7,19 @@ environment:
       compiler: mingw
 
     - qt: qt5
+      platform: win32
+      compiler: mingw
+
+    - qt: qt5
+      platform: win32
+      compiler: msvc
+
+    - qt: qt5
       platform: win64
       compiler: mingw
 
     - qt: qt5
       platform: win64
-      compiler: msvc
-
-    - qt: qt6
-      platform: win32
-      compiler: mingw
-
-    - qt: qt6
-      platform: win32
       compiler: msvc
 
     - qt: qt6

@@ -194,7 +194,12 @@ else
     Qt="$external/Qt/$Qt6_version"
 fi
 
-qmake="$Qt/bin/qmake"
+if [ $1 = "android" -a $qt = "qt6" ]; then
+
+    qmake="$Qt/gcc_64/bin/qmake"
+else
+    qmake="$Qt/bin/qmake"
+fi
 
 #--------------------------------------------------------------------------------------------------
 # Clean

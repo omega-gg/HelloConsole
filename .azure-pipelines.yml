@@ -127,19 +127,3 @@ jobs:
                                      zip -rq ../HelloConsole.zip *"
   - publish: $(System.DefaultWorkingDirectory)/HelloConsole.zip
     artifact: HelloConsole-android-qt5
-
-- job: android_qt6
-  pool:
-    vmImage: "ubuntu-latest"
-  steps:
-  - bash: |
-      docker run -d --name ubuntu -v $PWD:/HelloConsole amd64/ubuntu:20.04 tail -f /dev/null
-      docker exec -t ubuntu bash -c "cd /HelloConsole;
-                                     apt-get update;
-                                     apt-get -y install sudo curl zip unzip git;
-                                     sh environment.sh qt6;
-                                     sh build.sh android all;
-                                     cd deploy;
-                                     zip -rq ../HelloConsole.zip *"
-  - publish: $(System.DefaultWorkingDirectory)/HelloConsole.zip
-    artifact: HelloConsole-android-qt6

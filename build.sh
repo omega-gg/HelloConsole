@@ -55,7 +55,7 @@ qt="qt5"
 
 makeAndroid()
 {
-    if [ "$2" != "" ]; then
+    if [ $# = 2 ]; then
 
         qtconf="-qtconf $2"
     else
@@ -69,22 +69,18 @@ makeAndroid()
 
     make $make_arguments
 
-    if [ "$2" = "" ]; then
+    if [ $# = 2 ]; then
 
-        return 0
+        cd ..
+
+        # NOTE Android: We copy the build to its own folder.
+        mv build build-$1
+
+        mkdir build
+        touch build/.gitignore
+
+        cd build
     fi
-
-    #----------------------------------------------------------------------------------------------
-    # NOTE Android: We clean and copy the build to its own folder.
-
-    cd ..
-
-    mv build build-$1
-
-    mkdir build
-    touch build/.gitignore
-
-    cd build
 }
 
 #--------------------------------------------------------------------------------------------------
@@ -332,7 +328,7 @@ if [ $1 = "android" ]; then
         makeAndroid "x86"         "$Qt"/android_x86/bin/target_qt.conf
         makeAndroid "x86_64"      "$Qt"/android_x86_64/bin/target_qt.conf
 
-        mv build-* build
+        mv ../build-* .
     fi
 else
     $qmake -r -spec $spec "$config" ..

@@ -69,16 +69,22 @@ makeAndroid()
 
     make $make_arguments
 
+    if [ "$2" = "" ]; then
+
+        return 0
+    fi
+
     #----------------------------------------------------------------------------------------------
     # NOTE Android: We clean and copy the build to its own folder.
 
-    if [ -d $1 ]; then
+    cd ..
 
-        rm -rf $1
-    fi
+    mv build build-$1
 
-    mkdir $1
-    mv src/ Makefile .qmake.stash $1
+    mkdir build
+    touch build/.gitignore
+
+    cd build
 }
 
 #--------------------------------------------------------------------------------------------------
@@ -325,6 +331,8 @@ if [ $1 = "android" ]; then
         makeAndroid "arm64-v8a"   "$Qt"/android_arm64_v8a/bin/target_qt.conf
         makeAndroid "x86"         "$Qt"/android_x86/bin/target_qt.conf
         makeAndroid "x86_64"      "$Qt"/android_x86_64/bin/target_qt.conf
+
+        mv build-* build
     fi
 else
     $qmake -r -spec $spec "$config" ..

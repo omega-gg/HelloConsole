@@ -341,7 +341,9 @@ if [ $compiler = "mingw" ]; then
 elif [ $compiler = "msvc" ]; then
 
     jom
-else
+
+elif [ $1 != "android" ]; then
+
     make $make_arguments
 fi
 

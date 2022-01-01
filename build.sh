@@ -53,6 +53,36 @@ qt="qt5"
 # Functions
 #--------------------------------------------------------------------------------------------------
 
+makeAndroid()
+{
+    if [ "$2" != "" ]; then
+
+        qtconf="-qtconf $2"
+    else
+        qtconf=""
+    fi
+
+    $qmake -r -spec $spec $qtconf "$config" \
+        "ANDROID_ABIS=$1" \
+        "ANDROID_MIN_SDK_VERSION=$SDK_version_minimum" \
+        "ANDROID_TARGET_SDK_VERSION=$SDK_version" ..
+
+    make $make_arguments
+
+    #----------------------------------------------------------------------------------------------
+    # NOTE Android: We clean the folder and copy the build to its own folder.
+
+    if [ -d $1 ]; then
+
+        rm -rf $1
+    fi
+
+    mkdir $1
+    mv src/ Makefile .qmake.stash $1
+}
+
+#--------------------------------------------------------------------------------------------------
+
 getOs()
 {
     case `uname` in
@@ -287,10 +317,15 @@ cd build
 
 if [ $1 = "android" ]; then
 
-    $qmake -r -spec $spec "$config" \
-        "ANDROID_ABIS=$abi" \
-        "ANDROID_MIN_SDK_VERSION=$SDK_version_minimum" \
-        "ANDROID_TARGET_SDK_VERSION=$SDK_version" ..
+    if [ $qt = "qt5" ]; then
+
+        makeAndroid "$abi"
+    else
+        makeAndroid "armeabi-v7a" "$Qt"/android_armv7/bin/target_qt.conf
+        makeAndroid "arm64-v8a"   "$Qt"/android_arm64_v8a/bin/target_qt.conf
+        makeAndroid "x86"         "$Qt"/android_x86/bin/target_qt.conf
+        makeAndroid "x86_64"      "$Qt"/android_x86_64/bin/target_qt.conf
+    fi
 else
     $qmake -r -spec $spec "$config" ..
 fi

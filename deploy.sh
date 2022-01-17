@@ -113,15 +113,15 @@ if [ $os = "windows" ]; then
         cp "$path"/QtXml4.dll         deploy
         cp "$path"/QtXmlPatterns4.dll deploy
     else
-        cp "$path"/"$QtX"Core.dll    deploy
-        cp "$path"/"$QtX"Network.dll deploy
-        cp "$path"/"$QtX"Xml.dll     deploy
+        cp "$path/$QtX"Core.dll    deploy
+        cp "$path/$QtX"Network.dll deploy
+        cp "$path/$QtX"Xml.dll     deploy
 
         if [ $qt = "qt5" ]; then
 
-            cp "$path"/"$QtX"XmlPatterns.dll deploy
+            cp "$path/$QtX"XmlPatterns.dll deploy
         else
-            cp "$path"/"$QtX"Core5Compat.dll deploy
+            cp "$path/$QtX"Core5Compat.dll deploy
         fi
     fi
 
@@ -154,15 +154,15 @@ elif [ $1 = "linux" ]; then
         cp "$path"/libQtXml.so.4         deploy
         cp "$path"/libQtXmlPatterns.so.4 deploy
     else
-        cp "$path"/lib"$QtX"Core.so.$qx    deploy
-        cp "$path"/lib"$QtX"Network.so.$qx deploy
-        cp "$path"/lib"$QtX"Xml.so.$qx     deploy
+        cp "$path/lib$QtX"Core.so.$qx    deploy
+        cp "$path/lib$QtX"Network.so.$qx deploy
+        cp "$path/lib$QtX"Xml.so.$qx     deploy
 
         if [ $qt = "qt5" ]; then
 
-            cp "$path"/lib"$QtX"XmlPatterns.so.$qx deploy
+            cp "$path/lib$QtX"XmlPatterns.so.$qx deploy
         else
-            cp "$path"/lib"$QtX"Core5Compat.so.$qx deploy
+            cp "$path/lib$QtX"Core5Compat.so.$qx deploy
         fi
     fi
 
@@ -170,15 +170,15 @@ elif [ $1 = "android" ]; then
 
     if [ $qt != "qt4" ]; then
 
-        cp "$path"/lib"$QtX"Core_*.so    deploy
-        cp "$path"/lib"$QtX"Network_*.so deploy
-        cp "$path"/lib"$QtX"Xml_*.so     deploy
+        cp "$path/lib$QtX"Core_*.so    deploy
+        cp "$path/lib$QtX"Network_*.so deploy
+        cp "$path/lib$QtX"Xml_*.so     deploy
 
         if [ $qt = "qt5" ]; then
 
-            cp "$path"/lib"$QtX"XmlPatterns_*.so deploy
+            cp "$path/lib$QtX"XmlPatterns_*.so deploy
         else
-            cp "$path"/lib"$QtX"Core5Compat_*.so deploy
+            cp "$path/lib$QtX"Core5Compat_*.so deploy
         fi
     fi
 fi

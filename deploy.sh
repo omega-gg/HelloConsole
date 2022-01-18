@@ -58,7 +58,7 @@ elif [ $qt = "qt6" ]; then
 
     if [ $1 = "macOS" ]; then
 
-        qx="Current"
+        qx="A"
     else
         qx="6"
     fi

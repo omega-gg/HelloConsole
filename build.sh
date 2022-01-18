@@ -57,32 +57,30 @@ qt="qt5"
 
 makeAndroid()
 {
-    if [ $# = 2 ]; then
+    if [ ! -d "${1}" ]; then
 
-        qtconf="-qtconf $2"
-    else
+        mkdir $1
+    fi
+
+    cd $1
+
+    if [ $qt = "qt5" ]; then
+
         qtconf=""
+    else
+        qtconf="-qtconf $2"
     fi
 
     $qmake -r -spec $spec $qtconf "$config" \
         "ANDROID_ABIS=$1" \
         "ANDROID_MIN_SDK_VERSION=$SDK_version_minimum" \
-        "ANDROID_TARGET_SDK_VERSION=$SDK_version" ..
+        "ANDROID_TARGET_SDK_VERSION=$SDK_version" ../..
 
     make $make_arguments
 
-    if [ $# = 2 ]; then
+    make INSTALL_ROOT=android-build install
 
-        cd ..
-
-        # NOTE Android: We copy the build to its own folder.
-        mv build build-$1
-
-        mkdir build
-        touch build/.gitignore
-
-        cd build
-    fi
+    cd ..
 }
 
 #--------------------------------------------------------------------------------------------------
@@ -321,17 +319,10 @@ cd build
 
 if [ $1 = "android" ]; then
 
-    if [ $qt = "qt5" ]; then
-
-        makeAndroid "$abi"
-    else
-        makeAndroid "armeabi-v7a" "$Qt"/android_armv7/bin/target_qt.conf
-        makeAndroid "arm64-v8a"   "$Qt"/android_arm64_v8a/bin/target_qt.conf
-        makeAndroid "x86"         "$Qt"/android_x86/bin/target_qt.conf
-        makeAndroid "x86_64"      "$Qt"/android_x86_64/bin/target_qt.conf
-
-        mv ../build-* .
-    fi
+    makeAndroid "armeabi-v7a" "$Qt"/android_armv7/bin/target_qt.conf
+    makeAndroid "arm64-v8a"   "$Qt"/android_arm64_v8a/bin/target_qt.conf
+    makeAndroid "x86"         "$Qt"/android_x86/bin/target_qt.conf
+    makeAndroid "x86_64"      "$Qt"/android_x86_64/bin/target_qt.conf
 else
     $qmake -r -spec $spec "$config" ..
 fi
@@ -343,10 +334,6 @@ if [ $compiler = "mingw" ]; then
 elif [ $compiler = "msvc" ]; then
 
     jom
-
-elif [ $1 != "android" ]; then
-
-    make $make_arguments
 fi
 
 cd ..

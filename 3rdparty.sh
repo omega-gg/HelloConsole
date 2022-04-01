@@ -14,8 +14,6 @@ compiler_win="mingw"
 
 qt="qt5"
 
-mobile="simulator"
-
 #--------------------------------------------------------------------------------------------------
 # Syntax
 #--------------------------------------------------------------------------------------------------
@@ -52,7 +50,6 @@ if [ "$2" = "all" ]; then
 
     sh environment.sh $compiler_win
     sh environment.sh $qt
-    sh environment.sh $mobile
 
     sh 3rdparty.sh $1 all
 else

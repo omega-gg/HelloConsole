@@ -18,4 +18,3 @@ SOURCES += $$SK_CORE/controllers/WController.cpp \
            $$SK_CORE/controllers/WControllerXml.cpp \
            $$SK_CORE/controllers/WControllerNetwork.cpp \
            $$SK_CORE/controllers/WControllerDownload.cpp \
-

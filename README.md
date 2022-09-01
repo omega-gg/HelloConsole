@@ -8,7 +8,7 @@ HelloConsole is a "Hello World" console application built with Sky kit.<br>
 
 ## Technology
 
-HelloConsole is built in C++ with [Sky kit](http://omega.gg/Sky/sources).<br>
+HelloConsole is built in C++ with [Sky kit](https://omega.gg/Sky/sources).<br>
 
 ## Platforms
 
@@ -19,14 +19,14 @@ HelloConsole is built in C++ with [Sky kit](http://omega.gg/Sky/sources).<br>
 
 ## Requirements
 
-- [Sky](http://omega.gg/Sky/sources) latest version.
-- [Qt](http://download.qt.io/official_releases/qt) 4.8.0 / 5.5.0 or later.
+- [Sky](https://omega.gg/Sky/sources) latest version.
+- [Qt](https://download.qt.io/official_releases/qt) 4.8.0 / 5.5.0 or later.
 
 On Windows:
-- [MinGW](http://sourceforge.net/projects/mingw) or [Git for Windows](http://git-for-windows.github.io) with g++ 4.9.2 or later.
+- [MinGW](https://sourceforge.net/projects/mingw) or [Git for Windows](https://git-for-windows.github.io) with g++ 4.9.2 or later.
 
 Recommended:
-- [Qt Creator](http://download.qt.io/official_releases/qtcreator) 3.6.0 or later.
+- [Qt Creator](https://download.qt.io/official_releases/qtcreator) 3.6.0 or later.
 
 ## 3rdparty
 
@@ -58,7 +58,7 @@ Copyright (C) 2015 - 2020 HelloConsole authors | http://omega.gg/HelloConsole
 
 ### Authors
 
-- Benjamin Arnaud aka [bunjee](http://bunjee.me) | <bunjee@omega.gg>
+- Benjamin Arnaud aka [bunjee](https://bunjee.me) | <bunjee@omega.gg>
 
 ### GNU General Public License Usage
 

@@ -42,7 +42,7 @@ WindowsKit_version="10"
 SDK_version="31"
 SDK_version_minimum="21"
 
-NDK_version="23"
+NDK_version="22"
 
 #--------------------------------------------------------------------------------------------------
 # environment
@@ -259,6 +259,9 @@ if [ $compiler = "mingw" ]; then
     spec=win32-g++
 
     PATH="$Qt/bin:$MinGW:$PATH"
+
+    echo "$PATH"
+    gcc --version
 
 elif [ $compiler = "msvc" ]; then
 

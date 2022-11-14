@@ -260,6 +260,8 @@ if [ $compiler = "mingw" ]; then
 
     PATH="$Qt/bin:$MinGW:$PATH"
 
+    "$MinGW"/gcc --version
+
     echo "$PATH"
     gcc --version
 

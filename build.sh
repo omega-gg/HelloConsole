@@ -260,11 +260,6 @@ if [ $compiler = "mingw" ]; then
 
     PATH="$Qt/bin:$MinGW:$PATH"
 
-    "$MinGW"/gcc --version
-
-    echo "$PATH"
-    gcc --version
-
 elif [ $compiler = "msvc" ]; then
 
     if [ $qt = "qt4" ]; then
@@ -291,7 +286,7 @@ elif [ $1 = "macOS" ]; then
 
     spec=macx-clang
 
-    export PATH=$Qt/bin:$PATH
+    export PATH="$Qt/bin:$PATH"
 
 elif [ $1 = "linux" ]; then
 

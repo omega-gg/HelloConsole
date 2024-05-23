@@ -54,7 +54,7 @@ You can deploy HelloConsole with:
 
 ## License
 
-Copyright (C) 2015 - 2020 HelloConsole authors | https://omega.gg/HelloConsole
+Copyright (C) 2015 - 2024 HelloConsole authors | https://omega.gg/HelloConsole
 
 ### Authors
 

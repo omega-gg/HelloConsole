@@ -10,11 +10,6 @@ Sky="../Sky"
 external="../3rdparty"
 
 #--------------------------------------------------------------------------------------------------
-# Windows
-
-MinGW_version="13.1.0"
-
-#--------------------------------------------------------------------------------------------------
 # environment
 
 compiler_win="mingw"
@@ -29,9 +24,9 @@ if [ $# != 1 -a $# != 2 ] \
    || \
    [ $1 != "win32" -a $1 != "win64" -a $1 != "macOS" -a $1 != "linux" -a $1 != "android" ] \
    || \
-   [ $# = 2 -a "$2" != "sky" -a "$2" != "clean" ]; then
+   [ $# = 2 -a "$2" != "clean" ]; then
 
-    echo "Usage: configure <win32 | win64 | macOS | linux | android> [sky | clean]"
+    echo "Usage: configure <win32 | win64 | macOS | linux | android> [clean]"
 
     exit 1
 fi
@@ -45,14 +40,11 @@ external="$external/$1"
 if [ $1 = "win32" -o $1 = "win64" ]; then
 
     compiler="$compiler_win"
-
-    if [ $compiler = "mingw" ]; then
-
-        MinGW="$external/MinGW/$MinGW_version/bin"
-    fi
 else
     compiler="default"
 fi
+
+path="$Sky/deploy"
 
 #--------------------------------------------------------------------------------------------------
 # Clean
@@ -74,25 +66,6 @@ if [ "$2" = "clean" ]; then
 fi
 
 #--------------------------------------------------------------------------------------------------
-# Sky
-#--------------------------------------------------------------------------------------------------
-
-if [ "$2" = "sky" ]; then
-
-    echo "CONFIGURING Sky"
-    echo "---------------"
-
-    cd "$Sky"
-
-    sh configure.sh $1
-
-    cd -
-
-    echo "---------------"
-    echo ""
-fi
-
-#--------------------------------------------------------------------------------------------------
 # MinGW
 #--------------------------------------------------------------------------------------------------
 
@@ -100,7 +73,9 @@ echo "CONFIGURING HelloConsole"
 
 if [ $compiler = "mingw" ]; then
 
-    cp "$MinGW"/libgcc_s_*-1.dll    bin
-    cp "$MinGW"/libstdc++-6.dll     bin
-    cp "$MinGW"/libwinpthread-1.dll bin
+    echo "COPYING MinGW"
+
+    cp "$path"/libgcc_s_*-1.dll    bin
+    cp "$path"/libstdc++-6.dll     bin
+    cp "$path"/libwinpthread-1.dll bin
 fi

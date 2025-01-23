@@ -44,7 +44,7 @@ else
     compiler="default"
 fi
 
-path="$Sky/deploy"
+deploy="$Sky/deploy"
 
 #--------------------------------------------------------------------------------------------------
 # Clean
@@ -75,7 +75,7 @@ if [ $compiler = "mingw" ]; then
 
     echo "COPYING MinGW"
 
-    cp "$path"/libgcc_s_*-1.dll    bin
-    cp "$path"/libstdc++-6.dll     bin
-    cp "$path"/libwinpthread-1.dll bin
+    cp "$deploy"/libgcc_s_*-1.dll    bin
+    cp "$deploy"/libstdc++-6.dll     bin
+    cp "$deploy"/libwinpthread-1.dll bin
 fi

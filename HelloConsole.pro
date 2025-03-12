@@ -52,6 +52,12 @@ include(src/3rdparty/qtsingleapplication/qtsingleapplication.pri)
 
 INCLUDEPATH += $$SK/include/SkCore
 
+# NOTE android: Required for qandroidextras_p
+android:greaterThan(QT_MAJOR_VERSION, 4) {
+    INCLUDEPATH += $$SK/include/$$QTX \
+                   $$SK/include/$$QTX/QtCore
+}
+
 # Windows dependency for ShellExecuteA
 win32-msvc*:LIBS += shell32.lib
 

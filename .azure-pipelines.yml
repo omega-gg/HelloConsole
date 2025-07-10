@@ -89,14 +89,18 @@ jobs:
 
 - job: linux64_qt4
   pool:
-    # NOTE: Ubuntu 20.04 seems to be required for qt4-default.
-    vmImage: "ubuntu-20.04"
+    vmImage: "ubuntu-latest"
   steps:
+  # NOTE: Ubuntu 20.04 seems to be required for qt4-default.
   - bash: |
-      sh environment.sh qt4
-      sh build.sh linux all
-      cd deploy
-      zip -rq ../HelloConsole.zip *
+      docker run -d --name ubuntu -v $PWD:/HelloConsole amd64/ubuntu:18.04 tail -f /dev/null
+      docker exec -t ubuntu bash -c "cd /HelloConsole;
+                                     apt-get update;
+                                     apt-get -y install sudo curl zip git;
+                                     sh environment.sh qt4;
+                                     sh build.sh linux all;
+                                     cd deploy;
+                                     zip -rq ../HelloConsole.zip *"
   - publish: $(System.DefaultWorkingDirectory)/HelloConsole.zip
     artifact: HelloConsole-linux64-qt4
 

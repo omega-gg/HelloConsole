@@ -5,6 +5,8 @@ set -e
 # Settings
 #--------------------------------------------------------------------------------------------------
 
+target="HelloConsole"
+
 Sky="../Sky"
 
 external="../3rdparty"
@@ -69,7 +71,7 @@ fi
 # MinGW
 #--------------------------------------------------------------------------------------------------
 
-echo "CONFIGURING HelloConsole"
+echo "CONFIGURING $target"
 
 if [ $compiler = "mingw" ]; then
 

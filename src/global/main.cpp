@@ -35,5 +35,9 @@ int main(int argc, char * argv[])
 
     qDebug("Hello Sky Console");
 
-    return application->exec();
+    int result = application->exec();
+
+    delete application;
+
+    return result;
 }

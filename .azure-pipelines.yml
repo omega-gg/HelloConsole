@@ -51,7 +51,7 @@ jobs:
       sh environment.sh qt5
       sh build.sh macOS all
       cd deploy
-      zip -rq ../HelloConsole.zip *
+      zip -rqy ../HelloConsole.zip *
   - publish: $(System.DefaultWorkingDirectory)/HelloConsole.zip
     artifact: HelloConsole-macOS-qt5
 
@@ -63,7 +63,7 @@ jobs:
       sh environment.sh qt6
       sh build.sh macOS all
       cd deploy
-      zip -rq ../HelloConsole.zip *
+      zip -rqy ../HelloConsole.zip *
   - publish: $(System.DefaultWorkingDirectory)/HelloConsole.zip
     artifact: HelloConsole-macOS-qt6
 
@@ -84,7 +84,7 @@ jobs:
                                      sh environment.sh qt4;
                                      sh build.sh linux all;
                                      cd deploy;
-                                     zip -rq ../HelloConsole.zip *"
+                                     zip -rqy ../HelloConsole.zip *"
   - publish: $(System.DefaultWorkingDirectory)/HelloConsole.zip
     artifact: HelloConsole-linux32-qt4
 
@@ -101,7 +101,7 @@ jobs:
                                      sh environment.sh qt4;
                                      sh build.sh linux all;
                                      cd deploy;
-                                     zip -rq ../HelloConsole.zip *"
+                                     zip -rqy ../HelloConsole.zip *"
   - publish: $(System.DefaultWorkingDirectory)/HelloConsole.zip
     artifact: HelloConsole-linux64-qt4
 
@@ -120,7 +120,7 @@ jobs:
                                      sh environment.sh qt5;
                                      sh build.sh linux all;
                                      cd deploy;
-                                     zip -rq ../HelloConsole.zip *"
+                                     zip -rqy ../HelloConsole.zip *"
   - publish: $(System.DefaultWorkingDirectory)/HelloConsole.zip
     artifact: HelloConsole-linux32-qt5
 
@@ -132,7 +132,7 @@ jobs:
       sh environment.sh qt5
       sh build.sh linux all
       cd deploy
-      zip -rq ../HelloConsole.zip *
+      zip -rqy ../HelloConsole.zip *
   - publish: $(System.DefaultWorkingDirectory)/HelloConsole.zip
     artifact: HelloConsole-linux64-qt5
 
@@ -146,7 +146,7 @@ jobs:
       sh environment.sh qt6
       sh build.sh linux all
       cd deploy
-      zip -rq ../HelloConsole.zip *
+      zip -rqy ../HelloConsole.zip *
   - publish: $(System.DefaultWorkingDirectory)/HelloConsole.zip
     artifact: HelloConsole-linux64-qt6
 
@@ -162,7 +162,7 @@ jobs:
       sh environment.sh qt5
       sh build.sh android all
       cd deploy
-      zip -rq ../HelloConsole.zip *
+      zip -rqy ../HelloConsole.zip *
   - publish: $(System.DefaultWorkingDirectory)/HelloConsole.zip
     artifact: HelloConsole-android-qt5
 
@@ -174,6 +174,6 @@ jobs:
       sh environment.sh qt6
       sh build.sh android all
       cd deploy
-      zip -rq ../HelloConsole.zip *
+      zip -rqy ../HelloConsole.zip *
   - publish: $(System.DefaultWorkingDirectory)/HelloConsole.zip
     artifact: HelloConsole-android-qt6
